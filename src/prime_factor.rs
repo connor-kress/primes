@@ -10,39 +10,39 @@ pub fn is_prime(n: u128) -> bool {
 }
 
 struct Prime {
-  curr: u128,
-  next: u128,
-  trial1: u128,
-  trial2: u128
+    curr: u128,
+    next: u128,
+    trial1: u128,
+    trial2: u128,
 }
 
 impl Prime {
-  pub fn new() -> Prime {
-    Prime {
-      curr: 2,
-      next: 3,
-      trial1: 5,
-      trial2: 7
+    pub fn new() -> Prime {
+        Prime {
+            curr: 2,
+            next: 3,
+            trial1: 5,
+            trial2: 7,
+        }
     }
-  }
 }
 
 impl Iterator for Prime {
-  type Item = u128;
+    type Item = u128;
 
-  fn next(&mut self) -> Option<Self::Item> {
-    let prime = self.curr;
-    self.curr = self.next;
-    loop {
-      self.next = self.trial1;
-      self.trial1 = self.trial2;
-      self.trial2 = self.next+6;
-      if is_prime(self.next) {
-        break;
-      }
+    fn next(&mut self) -> Option<Self::Item> {
+        let prime = self.curr;
+        self.curr = self.next;
+        loop {
+            self.next = self.trial1;
+            self.trial1 = self.trial2;
+            self.trial2 = self.next + 6;
+            if is_prime(self.next) {
+                break;
+            }
+        }
+        Some(prime)
     }
-    Some(prime)
-  }
 }
 
 fn add_prime(p: u128, map: &mut HashMap<u128, u128>) {

@@ -14,7 +14,7 @@ fn main() {
         Err(error) => {
             println!("[ERROR] {}", error);
             return;
-        },
+        }
     }
     let prime_map = prime_factorization(num);
     let equation = get_equation_string(&prime_map, num);
