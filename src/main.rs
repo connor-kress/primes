@@ -4,7 +4,7 @@ use std::num::ParseIntError;
 mod prime_factor;
 use prime_factor::prime_factorization;
 
-fn get_equation_string(prime_map: HashMap<u128, u128>, num: u128) -> String {
+fn get_equation_string(prime_map: &HashMap<u128, u128>, num: u128) -> String {
     let mut primes = prime_map.keys()
                               .map(|num| *num)
                               .collect::<Vec<u128>>();
@@ -43,6 +43,6 @@ fn main() {
         },
     }
     let prime_map = prime_factorization(num);
-    let equation = get_equation_string(prime_map, num);
+    let equation = get_equation_string(&prime_map, num);
     println!("{}", equation);
 }
