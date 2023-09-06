@@ -28,7 +28,7 @@ fn get_equation_string(prime_map: HashMap<u128, u128>, num: u128) -> String {
 
 fn get_input_integer() -> Result<u128, ParseIntError> {
     let mut line = String::new();
-    println!("Number > ");
+    println!("Number:");
     let _ = std::io::stdin().read_line(&mut line);
     line.trim().parse()
 }
