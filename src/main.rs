@@ -1,19 +1,13 @@
-mod prime_factor;
-use prime_factor::prime_factorization;
-
-mod input;
-use input::get_input_integer;
-
-mod strings;
-use strings::get_equation_string;
+mod core;
+#[allow(unused_imports)]
+use core::{ get_arg_integer, get_input_integer, prime_factorization, get_equation_string };
 
 fn main() {
     let num: u128;
-    match get_input_integer() {
+    match get_arg_integer() {
         Ok(int) => num = int,
         Err(error) => {
-            println!("[ERROR] {}", error);
-            return;
+            return println!("[ERROR] {}", error);
         }
     }
     let prime_map = prime_factorization(num);
